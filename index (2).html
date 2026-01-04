@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Corporate Website | Modern Dark Theme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- Fully Revamped CSS with Dark Theme & Advanced Animations --- */
+
+        /* 1. Root Variables & Global Styles (Dark Theme) */
+        :root {
+            --primary-color: #0ea5e9; /* Sky Blue */
+            --secondary-color: #f8fafc; /* Slate 50 (for headings) */
+            --accent-color: #38bdf8; /* Lighter Sky Blue */
+            --background-color: #0f172a; /* Slate 900 (Deep Dark Blue) */
+            --surface-color: #1e293b; /* Slate 800 (Lighter Dark for Cards) */
+            --text-color: #cbd5e1; /* Slate 300 (Light Gray for Text) */
+            --border-color: #334155; /* Slate 700 */
+            --glow-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+            --font-primary: 'Poppins', sans-serif;
+            --transition-speed: 0.4s;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        /* 1.1 Pre-loader Style */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-color);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--border-color);
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 2. Header & Navigation */
+        .header {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(15, 23, 42, 0.95);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .main-nav ul {
+            display: flex;
+            gap: 35px;
+        }
+
+        .main-nav a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .main-nav a:hover::after, .main-nav a.active::after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all var(--transition-speed) ease;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .mobile-nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
+
+        /* 3. Hero Section */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url('https://via.placeholder.com/1920x1080/111827/111827') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.1), transparent 70%);
+            animation: pulse 5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.9); opacity: 0.7; }
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 750px;
+            margin: 0 auto 40px;
+            color: var(--text-color);
+            animation: slideInUp 1s ease-out 0.3s;
+            animation-fill-mode: both;
+        }
+
+        .hero .btn {
+            animation: slideInUp 1s ease-out 0.6s;
+            animation-fill-mode: both;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* 4. About Us Section */
+        .about-section {
+            background-color: var(--background-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .about-image img:hover {
+            transform: scale(1.05);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .stats-counter { display: flex; gap: 40px; margin-top: 30px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 3rem; font-weight: 700; color: var(--primary-color); }
+        .stat-item p { color: var(--text-color); }
+
+        /* 5. Services Section */
+        .services-section {
+            background-color: var(--surface-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--background-color);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary-color);
+            box-shadow: var(--glow-shadow);
+        }
+
+        .service-icon { font-size: 3.5rem; color: var(--primary-color); margin-bottom: 25px; transition: transform 0.3s ease; }
+        .service-card:hover .service-icon { transform: scale(1.2) rotate(10deg); }
+        .service-card h3 { font-size: 1.6rem; margin-bottom: 15px; color: var(--secondary-color); }
+        .service-card .service-description { display: none; } /* Hide for modal */
+
+
+        /* 5.1 Modal/Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--surface-color);
+            padding: 40px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.4s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        #modal-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+
+        /* 6. Testimonials Section */
+        .testimonials-section { background-color: var(--background-color); }
+
+        .testimonial-slider { max-width: 800px; margin: 0 auto; position: relative; overflow: hidden; height: 320px; }
+
+        .testimonial-slide {
+            position: absolute; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transform: translateX(50px);
+        }
+        
+        .testimonial-slide.active { opacity: 1; transform: translateX(0); }
+        .testimonial-slide:not(.active) { transform: translateX(-50px); }
+
+        .testimonial-text {
+            font-size: 1.3rem; font-style: italic; margin-bottom: 30px; text-align: center;
+            color: var(--secondary-color);
+        }
+
+        .testimonial-author { display: flex; align-items: center; gap: 15px; }
+        .testimonial-author img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--primary-color); }
+        .testimonial-author h4 { color: #fff; margin: 0; font-size: 1.1rem; }
+        .testimonial-author span { opacity: 0.8; }
+
+        .slider-controls {
+            position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 20px;
+        }
+
+        .slider-controls button {
+            background: var(--surface-color); border: 1px solid var(--border-color);
+            color: #fff; width: 45px; height: 45px; border-radius: 50%;
+            cursor: pointer; font-size: 1.2rem; transition: all 0.3s;
+        }
+        
+        .slider-controls button:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
+
+
+        /* 7. Contact Section */
+        .contact-section { background-color: var(--surface-color); }
+
+        .contact-wrapper {
+            display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px;
+            background: var(--background-color); padding: 50px; border-radius: 15px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px; border: 1px solid var(--border-color);
+            border-radius: 8px; font-family: var(--font-primary); font-size: 1rem;
+            background-color: var(--surface-color); color: var(--text-color);
+            transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--primary-color); box-shadow: var(--glow-shadow);
+        }
+
+        .contact-info h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .contact-info ul li { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+        .contact-info ul i { color: var(--primary-color); font-size: 1.4rem; width: 25px; }
+        
+        .social-links { margin-top: 30px; display: flex; gap: 15px; }
+        .social-links a {
+            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;
+            border: 1px solid var(--border-color); border-radius: 50%; color: var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover { background-color: var(--primary-color); color: #fff; transform: translateY(-5px); }
+
+        /* 8. Footer */
+        .footer {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 20px;
+        }
+        
+        .footer-credits p { margin: 0; }
+        
+        .fiverr-link {
+            display: inline-block; margin-top: 5px; color: var(--accent-color); font-weight: 500;
+            border: 1px solid var(--accent-color); padding: 8px 15px; border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .fiverr-link:hover {
+            background-color: var(--accent-color); color: var(--background-color);
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* 9. Responsive Design */
+        @media (max-width: 992px) {
+            .container { padding: 0 30px; }
+            .about-content, .contact-wrapper { grid-template-columns: 1fr; }
+            .hero-title { font-size: 3rem; }
+            .footer-content { flex-direction: column; gap: 15px; }
+            .header-actions .btn { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background-color: var(--surface-color);
+            }
+            .main-nav.active { display: block; }
+            .main-nav ul { flex-direction: column; gap: 0; }
+            .main-nav li a { display: block; padding: 15px 30px; border-bottom: 1px solid var(--border-color); }
+            .main-nav a::after { display: none; }
+            .mobile-nav-toggle { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            section { padding: 80px 0; }
+            .section-title h2 { font-size: 2.2rem; }
+            .contact-wrapper { padding: 30px; }
+        }
+
+        /* 10. Animations & Effects on Scroll */
+        .animated-element {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animated-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Pre-loader -->
+    <div class="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">CorpVision</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                 <a href="https://www.fiverr.com/s/xX9rddx" target="_blank" class="btn btn-primary">Hire Me on Fiverr</a>
+                 <button class="mobile-nav-toggle"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Driving Your Vision, Engineering Success</h1>
+            <p class="hero-subtitle">We craft premium digital experiences with cutting-edge technology and modern design principles, ensuring your business stands out.</p>
+            <a href="#services" class="btn btn-primary">Discover Our Solutions</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-title animated-element">
+                <h2>About Our Company</h2>
+                <p>Driving success through dedication and expertise since 2010.</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image animated-element">
+                    <img src="https://via.placeholder.com/500x350/1e293b/f8fafc" alt="Team discussing strategy">
+                </div>
+                <div class="about-text animated-element">
+                    <h3>Who We Are</h3>
+                    <p>CorpVision is a leading consultancy firm specializing in digital transformation, market strategy, and operational excellence. Our team of seasoned experts is dedicated to helping businesses like yours navigate the complexities of the modern marketplace.</p>
+                    <p>We believe in building partnerships, not just client lists. Our approach is collaborative, transparent, and tailored to your unique needs, ensuring sustainable growth and a competitive edge.</p>
+                    <div class="stats-counter">
+                        <div class="stat-item"><h4 class="stat-number" data-target="250">0</h4><p>Happy Clients</p></div>
+                        <div class="stat-item"><h4 class="stat-number" data-target="400">0</h4><p>Projects Completed</p></div>
+                        <div class="stat-item"><h4 class="stat-number" data-target="15">0</h4><p>Years of Experience</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-title animated-element">
+                <h2>Our Core Services</h2>
+                <p>We offer a wide range of services to help you achieve your business goals.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card animated-element" data-title="Business Strategy" data-description="We develop a robust, data-driven strategy that aligns perfectly with your long-term vision and current market opportunities. Our goal is to create a clear roadmap for sustainable growth and competitive advantage.">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Business Strategy</h3>
+                </div>
+                <div class="service-card animated-element" data-title="Digital Marketing" data-description="Enhance your online presence with our comprehensive digital marketing campaigns. We cover everything from advanced SEO and content marketing to social media management and PPC advertising, all designed to attract and convert your target audience.">
+                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                    <h3>Digital Marketing</h3>
+                </div>
+                <div class="service-card animated-element" data-title="Process Automation" data-description="Optimize your operations, reduce overhead costs, and increase efficiency by automating repetitive tasks. We utilize cutting-edge technology and AI to streamline your workflows, freeing up your team to focus on high-value activities.">
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Process Automation</h3>
+                </div>
+                <div class="service-card animated-element" data-title="Cyber Security" data-description="Protect your valuable digital assets and infrastructure with our comprehensive cybersecurity solutions. We offer risk assessments, threat monitoring, and robust defense strategies to safeguard your business against modern cyber threats.">
+                    <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Cyber Security</h3>
+                </div>
+                 <div class="service-card animated-element" data-title="Cloud Solutions" data-description="Leverage the power of the cloud for ultimate scalability, flexibility, and improved collaboration. We help you migrate, manage, and optimize your cloud infrastructure, whether it's on AWS, Azure, or Google Cloud.">
+                    <div class="service-icon"><i class="fas fa-cloud"></i></div>
+                    <h3>Cloud Solutions</h3>
+                </div>
+                 <div class="service-card animated-element" data-title="UI/UX Design" data-description="We create intuitive, beautiful, and engaging user experiences that not only delight your customers but also drive conversions. Our human-centered design process ensures your digital product is both easy to use and visually stunning.">
+                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                    <h3>UI/UX Design</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-title animated-element">
+                <h2>What Our Clients Say</h2>
+                <p>Real feedback from businesses we've helped to succeed.</p>
+            </div>
+            <div class="testimonial-slider animated-element">
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">"Working with CorpVision was a game-changer. Their insights and strategic approach doubled our growth in just one year."</p>
+                    <div class="testimonial-author"><img src="https://via.placeholder.com/80/0ea5e9/ffffff" alt="Client 1"><div><h4>Jane Doe</h4><span>CEO, Tech Innovators</span></div></div>
+                </div>
+                 <div class="testimonial-slide">
+                    <p class="testimonial-text">"The professionalism and dedication of their team are unmatched. They delivered a flawless project on time and on budget."</p>
+                    <div class="testimonial-author"><img src="https://via.placeholder.com/80/0ea5e9/ffffff" alt="Client 2"><div><h4>John Smith</h4><span>Director, Market Solutions</span></div></div>
+                </div>
+                 <div class="testimonial-slide">
+                    <p class="testimonial-text">"Their digital marketing services completely revamped our online presence. We've never had so many qualified leads."</p>
+                    <div class="testimonial-author"><img src="https://via.placeholder.com/80/0ea5e9/ffffff" alt="Client 3"><div><h4>Emily White</h4><span>Marketing Head, Creative Co.</span></div></div>
+                </div>
+                <div class="slider-controls"><button class="prev-slide"><i class="fas fa-chevron-left"></i></button><button class="next-slide"><i class="fas fa-chevron-right"></i></button></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-title animated-element">
+                <h2>Get In Touch</h2>
+                <p>Have a project in mind? Let's talk. We are here to help you.</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-form animated-element">
+                    <form id="main-contact-form">
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="text" name="subject" placeholder="Subject" required></div>
+                        <div class="form-group"><textarea name="message" placeholder="Your Message" rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info animated-element">
+                    <h3>Contact Information</h3>
+                    <p>Feel free to reach out to us through any of the following methods.</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Business Avenue, London, UK</li>
+                        <li><i class="fas fa-envelope"></i> contact@corpvision.com</li>
+                        <li><i class="fas fa-phone"></i> +44 20 1234 5678</li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/923188791637" target="_blank">+92 318 8791637</a></li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Service Modal Structure -->
+    <div class="modal-overlay" id="service-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <h2 id="modal-title">Service Title</h2>
+            <p id="modal-description">Service description goes here.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 CorpVision. All Rights Reserved.</p>
+                <div class="footer-credits">
+                    <p>Designed by: MUHAMMAD UMAIR AMIR</p>
+                    <a href="https://www.fiverr.com/s/xX9rddx" target="_blank" class="fiverr-link">My Fiverr Profile</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // 0. Pre-loader
+            const preloader = document.querySelector('.preloader');
+            window.addEventListener('load', () => {
+                preloader.classList.add('hidden');
+            });
+
+            // 1. Sticky Header on Scroll
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            // 2. Mobile Navigation Toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            mobileNavToggle.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+
+            const navLinks = document.querySelectorAll('.main-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+
+            // 3. Active Navigation Link Highlighting on Scroll
+            const sections = document.querySelectorAll('section');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // 4. Stats Counter Animation
+            const statsCounters = document.querySelectorAll('.stat-number');
+            const speed = 200; 
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const inc = Math.ceil(target / speed);
+                    if (count < target) {
+                        counter.innerText = Math.min(count + inc, target);
+                        setTimeout(updateCount, 10);
+                    }
+                };
+                updateCount();
+            };
+            
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statsCounters.forEach(counter => counterObserver.observe(counter));
+
+            // 5. Testimonial Slider
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const nextBtn = document.querySelector('.next-slide');
+            const prevBtn = document.querySelector('.prev-slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
+            function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            setInterval(nextSlide, 7000);
+
+            // 6. Contact Form Submission (Mock)
+            const contactForm = document.getElementById('main-contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.innerText = 'Message Sent!';
+                submitButton.style.backgroundColor = '#10b981'; 
+                submitButton.style.borderColor = '#10b981';
+                setTimeout(() => {
+                    this.reset();
+                    submitButton.innerText = 'Send Message';
+                    submitButton.style.backgroundColor = 'var(--primary-color)';
+                    submitButton.style.borderColor = 'var(--primary-color)';
+                }, 3000);
+            });
+            
+            // 7. Scroll Animations for elements
+            const animatedElements = document.querySelectorAll('.animated-element');
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => scrollObserver.observe(el));
+            
+            // 8. Service Modal Logic
+            const serviceModal = document.getElementById('service-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.getAttribute('data-title');
+                    const description = card.getAttribute('data-description');
+                    
+                    modalTitle.innerText = title;
+                    modalDescription.innerText = description;
+                    
+                    serviceModal.classList.add('active');
+                });
+            });
+            
+            const closeModal = () => {
+                serviceModal.classList.remove('active');
+            };
+            
+            modalCloseBtn.addEventListener('click', closeModal);
+            serviceModal.addEventListener('click', (e) => {
+                if (e.target === serviceModal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
